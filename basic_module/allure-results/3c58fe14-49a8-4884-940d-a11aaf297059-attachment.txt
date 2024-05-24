@@ -1,0 +1,8 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+Page loaded successfully.
+Response from doPay: {'result': None, 'code': '2313', 'msg': '先前的充值申请正在处理中，请勿重复提交！#Do Not Do Payment Again Before Your Order Is Finished#還有充值申請正在處理中，請稍後再提交。#อย่าชำระเงินอีกก่อนที่คำสั่งซื้อของคุณจะเสร็จสิ้น#Não faça o pagamento novamente antes que seu pedido seja concluído'}
+An error occurred: Page.click: Timeout 30000ms exceeded.
+Call log:
+waiting for locator("a:has-text('已完成充值')")
+
