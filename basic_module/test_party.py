@@ -50,13 +50,10 @@ async def test_specific_feature():
 
         page.on('response', handle_response)
 
-        with step("点击确定"):
-            if not page.is_closed():
-                await page.click("a.am-modal-button[role='button']:has-text('確定')")
-                await asyncio.sleep(2)
-                await take_screenshot_and_attach(page, "点击确定后")
-            else:
-                print("页面已关闭，无法点击确定。")
+        with step("點擊確定"):
+            await page.click("a.am-modal-button[role='button']:has-text('確定')")
+            await asyncio.sleep(2)
+            await take_screenshot_and_attach(page, "点击确定后")
 
     finally:
         page.remove_listener('response', handle_response)

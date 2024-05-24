@@ -5,7 +5,6 @@ from test_setup import load_and_check_page, setup_browser, take_screenshot_and_a
 
 
 @pytest.mark.asyncio
-@pytest.mark.asyncio
 async def test_specific_feature():
     playwright, browser, context = await setup_browser()  # 使用默认设备iPhone 11
     try:
