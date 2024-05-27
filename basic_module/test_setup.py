@@ -1,8 +1,8 @@
-from playwright.async_api import async_playwright
-import allure
+import os
 import asyncio
-from playwright.async_api import Page, BrowserContext
-# 默认的URL
+from playwright.async_api import async_playwright, Page, BrowserContext
+import allure
+
 DEFAULT_URL = "https://wap-q6.qbpink01.com/"
 
 
@@ -30,7 +30,6 @@ async def login(page: Page, username: str, password: str):
 async def load_and_check_page(context, url=DEFAULT_URL):
     """加载页面。"""
     page = await context.new_page()
-    print(f"Attempting to navigate to {url}")
     try:
         await page.goto(url)
         print("Page loaded successfully.")
@@ -40,29 +39,36 @@ async def load_and_check_page(context, url=DEFAULT_URL):
 
 
 async def take_screenshot_and_attach(page, step_name):
-    """捕获屏幕截图并附加到Allure报告。"""
+    """Capture screenshot and attach it to Allure report, and save it to disk."""
     if page.is_closed():
         print("Page is closed, cannot take screenshot.")
         return
     try:
-        screenshot_bytes = await page.screenshot(full_page=True)
-        allure.attach(screenshot_bytes, name=step_name,
-                      attachment_type=allure.attachment_type.PNG)
+        screenshots_dir = 'screenshots'  # Specify your desired directory
+        # Ensure the directory exists
+        os.makedirs(screenshots_dir, exist_ok=True)
+        screenshot_path = os.path.join(screenshots_dir, f"{step_name}.png")
+
+        # Take screenshot and save it to the defined path
+        await page.screenshot(path=screenshot_path, full_page=True)
+
+        # Attach the screenshot to Allure report
+        allure.attach.file(screenshot_path, name=step_name,
+                           attachment_type=allure.attachment_type.PNG)
     except Exception as e:
         print(f"Failed to take or attach screenshot: {str(e)}")
 
 
 async def run_tests():
-    """主测试函数，执行测试和截图逻辑。"""
+    """Main test function to perform tests and capture screenshots."""
     playwright, browser, context = await setup_browser()
     try:
         page = await load_and_check_page(context)
         await take_screenshot_and_attach(page, "Landing Page")
-        # 这里可以添加更多页面交互和截图
+        # Add more interactions and screenshots here
     finally:
         await browser.close()
         await playwright.stop()
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(run_tests())
