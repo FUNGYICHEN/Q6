@@ -1,0 +1,5 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+Page loaded successfully.
+Clicked at X: 41.400000000000006, Y: 543.4
+Test execution completed.

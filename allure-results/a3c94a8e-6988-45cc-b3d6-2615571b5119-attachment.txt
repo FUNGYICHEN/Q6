@@ -1,0 +1,2 @@
+[1m[31mERROR   [0m asyncio:base_events.py:1821 Task was destroyed but it is pending!
+task: <Task pending name='Task-14' coro=<Connection.run() running at C:\Users\luekc\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_connection.py:274> wait_for=<Future pending cb=[Task.task_wakeup()]>>

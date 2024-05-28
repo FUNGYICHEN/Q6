@@ -1,13 +1,12 @@
 from playwright.async_api import async_playwright
 import allure
 import asyncio
-import os
-
+from playwright.async_api import Page, BrowserContext
 # 默认的URL
 DEFAULT_URL = "https://wap-q6.qbpink01.com/"
 
 
-async def setup_browser(device_name='iPhone 11', headless=False):
+async def setup_browser(device_name='iPhone 11', headless=True):
     """设置浏览器环境并返回浏览器上下文和实例。"""
     playwright = await async_playwright().start()
     device = playwright.devices[device_name]
@@ -16,7 +15,7 @@ async def setup_browser(device_name='iPhone 11', headless=False):
     return playwright, browser, context
 
 
-async def login(page, username: str, password: str):
+async def login(page: Page, username: str, password: str):
     """登录到网站的通用函数。"""
     await page.click("button.login")
     await asyncio.sleep(3)
@@ -46,13 +45,9 @@ async def take_screenshot_and_attach(page, step_name):
         print("Page is closed, cannot take screenshot.")
         return
     try:
-        screenshots_dir = os.getenv(
-            'WORKSPACE', '.') + '/screenshots'  # Jenkins 工作空间中的截图目录
-        os.makedirs(screenshots_dir, exist_ok=True)
-        screenshot_path = f"{screenshots_dir}/{step_name}.png"
-        await page.screenshot(path=screenshot_path)
-        allure.attach.file(screenshot_path, name=step_name,
-                           attachment_type=allure.attachment_type.PNG)
+        screenshot_bytes = await page.screenshot(full_page=True)
+        allure.attach(screenshot_bytes, name=step_name,
+                      attachment_type=allure.attachment_type.PNG)
     except Exception as e:
         print(f"Failed to take or attach screenshot: {str(e)}")
 
@@ -69,4 +64,5 @@ async def run_tests():
         await playwright.stop()
 
 if __name__ == "__main__":
+    import asyncio
     asyncio.run(run_tests())

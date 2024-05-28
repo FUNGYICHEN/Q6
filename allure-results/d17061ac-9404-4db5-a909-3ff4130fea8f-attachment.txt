@@ -1,0 +1,7 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Failed to load page: Page.goto: Target page, context or browser has been closed
+Call log:
+navigating to "https://wap-q6.qbpink01.com/", waiting until "load"
+
+Page loaded successfully.
+An error occurred: Page.click: Target page, context or browser has been closed

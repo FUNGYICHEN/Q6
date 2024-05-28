@@ -1,0 +1,4 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+Page loaded successfully.
+An error occurred: Page.click: Target page, context or browser has been closed
