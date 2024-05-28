@@ -54,5 +54,5 @@ async def test_specific_feature():
         await browser.close()
         await playwright.stop()
 
-if __name__ == "__main__":
+if __name__ == "main":
     asyncio.run(test_specific_feature())
