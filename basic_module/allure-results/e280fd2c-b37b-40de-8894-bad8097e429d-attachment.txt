@@ -1,8 +1,0 @@
-Attempting to navigate to https://wap-q6.qbpink01.com/
-Page loaded successfully.
-Page loaded successfully.
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/cash/getAccountInfo
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/returnGameBalance
-API Response Data: {'msg': '该帐号正在游戏余额转帐中,稍后再试#The account is in game balance transfer, try again later#該帳號正在遊戲餘額轉帳中,稍後再試#บัญชีอยู่ในการโอนยอดคงเหลือในเกม โปรดลองอีกครั้งในภายหลัง#A conta está em transferência de saldo do jogo, tente novamente mais tarde', 'code': '10194'}
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/cash/getAccountBalance
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/cash/enterGame

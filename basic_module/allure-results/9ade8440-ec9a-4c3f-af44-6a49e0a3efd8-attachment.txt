@@ -1,5 +1,0 @@
-Attempting to navigate to https://wap-q6.qbpink01.com/
-Page loaded successfully.
-Page loaded successfully.
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/cash/getAccountInfo
-Response received from URL: https://wap-q6.qbpink01.com/member/frontend/cash/getAccountBalance
