@@ -1,6 +1,8 @@
 import asyncio
 import allure_commons
 from playwright.async_api import async_playwright
+import allure
+
 
 # 默认的URL
 DEFAULT_URL = "https://wap-q6.qbpink01.com/reg"

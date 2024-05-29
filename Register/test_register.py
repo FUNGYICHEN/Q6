@@ -1,11 +1,9 @@
 import asyncio
 import pytest
 from allure import step
-# Importing common functions
 from allcommon import setup_browser, take_screenshot_and_attach
 import string
 import random
-# Import the function to fetch the verification code
 from phone_code import fetch_verification_code
 
 
