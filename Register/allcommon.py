@@ -3,7 +3,7 @@ import allure_commons
 from playwright.async_api import async_playwright
 
 # 默认的URL
-DEFAULT_URL = "https://wap-q6.qbpink01.com/"
+DEFAULT_URL = "https://wap-q6.qbpink01.com/reg"
 
 
 async def setup_browser(device_name='iPhone 11', headless=False):

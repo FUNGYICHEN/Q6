@@ -1,20 +1,23 @@
 import asyncio
 import pytest
 from allure import step
-from allcommon import setup_browser, take_screenshot_and_attach, load_and_check_page
+# Importing common functions
+from allcommon import setup_browser, take_screenshot_and_attach
 import string
 import random
-# 導入 fetch_verification_code 函數
-from phone_code import fetch_verification_code  # type: ignore
+# Import the function to fetch the verification code
+from phone_code import fetch_verification_code
 
 
 def generate_random_string(length=12, digits=6):
+    """Generate a random string of letters and digits."""
     letters = ''.join(random.choices(string.ascii_letters, k=length - digits))
     numbers = ''.join(random.choices(string.digits, k=digits))
     return ''.join(random.sample(letters + numbers, len(letters + numbers)))
 
 
 def generate_hk_phone_number():
+    """Generate a random Hong Kong phone number that starts with 6, 9, or 5."""
     prefixes = ['6', '9', '5']
     return random.choice(prefixes) + ''.join(random.choice(string.digits) for _ in range(7))
 
@@ -45,7 +48,7 @@ async def test_registration():
             await asyncio.sleep(3)
             await take_screenshot_and_attach(page, "after_clicking_validate")
 
-        # 從後台獲取驗證碼
+        # Fetch the verification code from the backend
         verification_code = await fetch_verification_code()
         if verification_code:
             with step("填写验证码"):
