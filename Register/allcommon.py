@@ -1,8 +1,6 @@
 import asyncio
-import allure_commons
 from playwright.async_api import async_playwright
 import allure
-
 
 # 默认的URL
 DEFAULT_URL = "https://wap-q6.qbpink01.com/reg"
@@ -35,8 +33,8 @@ async def take_screenshot_and_attach(page, step_name):
         return
     try:
         screenshot_bytes = await page.screenshot(full_page=True)
-        allure_commons.attach(screenshot_bytes, name=step_name,
-                              attachment_type=allure.attachment_type.PNG)  # type: ignore
+        allure.attach(screenshot_bytes, name=step_name,
+                      attachment_type=allure.attachment_type.PNG)
     except Exception as e:
         print(f"Failed to take or attach screenshot: {str(e)}")
 
@@ -53,5 +51,4 @@ async def run_tests():
         await playwright.stop()
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(run_tests())

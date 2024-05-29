@@ -46,7 +46,6 @@ async def test_registration():
             await asyncio.sleep(10)
             await take_screenshot_and_attach(page, "after_clicking_validate")
 
-        # Fetch the verification code from the backend
         verification_code = await fetch_verification_code()
         if verification_code:
             with step("填写验证码"):
