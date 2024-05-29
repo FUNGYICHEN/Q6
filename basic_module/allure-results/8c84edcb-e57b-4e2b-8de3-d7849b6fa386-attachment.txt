@@ -1,0 +1,2 @@
+Failed to take or attach screenshot: module 'allure_commons' has no attribute 'attach'
+Page is closed, cannot take screenshot.
