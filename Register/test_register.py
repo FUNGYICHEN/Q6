@@ -5,7 +5,7 @@ from allcommon import setup_browser, take_screenshot_and_attach, load_and_check_
 import string
 import random
 # 導入 fetch_verification_code 函數
-from test_verification_code import fetch_verification_code  # type: ignore
+from phone_code import fetch_verification_code  # type: ignore
 
 
 def generate_random_string(length=12, digits=6):
