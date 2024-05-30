@@ -38,7 +38,7 @@ async def test_registration():
 
         with step("填写手机号码"):
             await page.fill('input[placeholder="請輸入手機號"]', phone_number)
-            await asyncio.sleep(10)
+            await asyncio.sleep(3)
             await take_screenshot_and_attach(page, "after_filling_phone_number")
 
         with step("点击发送验证码"):
@@ -61,7 +61,7 @@ async def test_registration():
             # 點擊註冊按鈕
         with step("点击注册按钮"):
             await page.click('div.submitBtn:has-text("會員註冊")')
-            await asyncio.sleep(3)
+            await asyncio.sleep(5)
             await take_screenshot_and_attach(page, "after_clicking_register")
 
     finally:
