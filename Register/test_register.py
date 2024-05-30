@@ -22,7 +22,7 @@ def generate_hk_phone_number():
 
 @pytest.mark.asyncio
 async def test_registration():
-    playwright, browser, context = await setup_browser(device_name='iPhone 11', headless=False)
+    playwright, browser, context = await setup_browser(device_name='iPhone 11', headless=True)
     try:
         page = await context.new_page()
         await page.goto('https://wap-q6.qbpink01.com/reg')
