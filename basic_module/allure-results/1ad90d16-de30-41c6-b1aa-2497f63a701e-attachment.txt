@@ -1,6 +1,0 @@
-Failed to take or attach screenshot: module 'allure_commons' has no attribute 'attach'
-Failed to take or attach screenshot: module 'allure_commons' has no attribute 'attach'
-Failed to take or attach screenshot: module 'allure_commons' has no attribute 'attach'
-API Response: {'result': {'data': []}, 'code': '0000'}
-No verification code received
-Failed to take or attach screenshot: module 'allure_commons' has no attribute 'attach'

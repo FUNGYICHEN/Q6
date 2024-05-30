@@ -1,3 +1,0 @@
-API Response: {'result': {'data': []}, 'code': '0000'}
-No verification code received
-Page is closed, cannot take screenshot.
