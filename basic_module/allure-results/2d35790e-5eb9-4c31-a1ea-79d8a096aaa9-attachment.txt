@@ -1,0 +1,5 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+页面加载成功。
+在 X: 41.400000000000006, Y: 543.4 位置点击
+测试执行完毕。

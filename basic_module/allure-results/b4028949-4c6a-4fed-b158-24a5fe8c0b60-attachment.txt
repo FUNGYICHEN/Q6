@@ -1,0 +1,8 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+页面加载成功。
+Response from getAvailableBalance: {'result': {'balance': 0.0, 'userViweId': 'all24042501', 'userId': 'all24042501@Q6', 'turnover': 0.0, 'availWithdrawTimes': 500}, 'code': '0000'}
+发生错误: Page.click: Timeout 30000ms exceeded.
+Call log:
+waiting for locator("a.am-modal-button:has-text('確定')")
+

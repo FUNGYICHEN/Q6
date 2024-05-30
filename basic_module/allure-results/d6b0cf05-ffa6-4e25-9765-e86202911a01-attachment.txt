@@ -1,0 +1,4 @@
+Attempting to navigate to https://wap-q6.qbpink01.com/
+Page loaded successfully.
+Page loaded successfully.
+Response from doPay: {'result': {'amount': 100, 'orderNo': 'b7186b8c96dd581d10f7', 'comId': 'Q6', 'userId': 'all24042501@Q6'}, 'code': '0000', 'msg': 'Success'}
