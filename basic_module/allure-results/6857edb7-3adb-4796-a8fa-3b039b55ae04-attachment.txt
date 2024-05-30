@@ -1,6 +1,0 @@
-Attempting to navigate to https://wap-q6.qbpink01.com/
-Page loaded successfully.
-Page loaded successfully.
-Clicked at X: 227.70000000000002, Y: 250.24999999999997
-Clicked at X: 227.70000000000002, Y: 336.04999999999995
-Clicked at X: 207.0, Y: 321.75
