@@ -41,7 +41,11 @@ async def test_specific_feature():
         async def handle_response(response):
             nonlocal test_failed, fail_message
             print("Response received from URL:", response.url)
-            json_data = await response.json()
+            try:
+                json_data = await response.json()
+            except:
+                return  # Ignore non-JSON responses
+
             if (response.url.endswith("/extrabonus/applyAward") and json_data.get('code') == '5602') or \
                (response.url.endswith("/eGamePrize/receiveAward") and json_data.get('code') == '9999'):
                 test_failed = True
@@ -51,7 +55,7 @@ async def test_specific_feature():
 
         page.on('response', handle_response)
 
-        with step("點擊確定"):
+        with step("点击确定"):
             await page.click("a.am-modal-button[role='button']:has-text('確定')")
             await asyncio.sleep(2)
             await take_screenshot_and_attach(page, "点击确定后")
