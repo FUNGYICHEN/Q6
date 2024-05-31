@@ -39,11 +39,11 @@ async def test_specific_feature():
             await take_screenshot_and_attach(page, "点击立即申请后")
 
         async def handle_response(response):
+            nonlocal test_failed, fail_message
             print("Response received from URL:", response.url)
             json_data = await response.json()
             if (response.url.endswith("/extrabonus/applyAward") and json_data.get('code') == '5602') or \
                (response.url.endswith("/eGamePrize/receiveAward") and json_data.get('code') == '9999'):
-                nonlocal test_failed, fail_message
                 test_failed = True
                 fail_message = f"Test failed for {
                     response.url.split('/')[-1]}: {json_data.get('msg')}"
