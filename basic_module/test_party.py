@@ -46,8 +46,8 @@ async def test_specific_feature():
             except:
                 return  # Ignore non-JSON responses
 
-            if (response.url.endswith("/extrabonus/applyAward") and json_data.get('code') == '5602') or \
-               (response.url.endswith("/eGamePrize/receiveAward") and json_data.get('code') == '9999'):
+            if (response.url.endswith("https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward") and json_data.get('code') == '5602') or \
+               (response.url.endswith("https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward") and json_data.get('code') == '9999'):
                 test_failed = True
                 fail_message = f"Test failed for {
                     response.url.split('/')[-1]}: {json_data.get('msg')}"

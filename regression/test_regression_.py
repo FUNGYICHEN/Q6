@@ -1,7 +1,7 @@
 import asyncio
 import pytest
 from allure import step
-from test_setup import load_and_check_page, setup_browser, take_screenshot_and_attach, login
+from setup import load_and_check_page, setup_browser, take_screenshot_and_attach, login
 import re
 
 
