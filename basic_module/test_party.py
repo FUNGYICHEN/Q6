@@ -40,18 +40,18 @@ async def test_specific_feature():
 
         async def handle_response(response):
             nonlocal test_failed, fail_message
-            print("Response received from URL:", response.url)
-            try:
+            if response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
                 json_data = await response.json()
-            except:
-                return  # Ignore non-JSON responses
-
-            if (response.url.endswith("https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward") and json_data.get('code') == '5602') or \
-               (response.url.endswith("https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward") and json_data.get('code') == '9999'):
-                test_failed = True
-                fail_message = f"Test failed for {
-                    response.url.split('/')[-1]}: {json_data.get('msg')}"
-                print(fail_message)
+                print(f"Response from getAvailableBalance: {json_data}")
+                if json_data.get('code') != '5602':
+                    test_failed = True
+                    fail_message = f"API 返回错误代码: {json_data.get('code')}"
+            elif response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
+                json_data = await response.json()
+                print(f"Response from insertWithdrawRecord: {json_data}")
+                if json_data.get('code') == '9999':
+                    test_failed = True
+                    fail_message = f"测试失败: {json_data.get('msg')}"
 
         page.on('response', handle_response)
 
