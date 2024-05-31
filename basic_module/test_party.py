@@ -42,14 +42,11 @@ async def test_specific_feature():
             nonlocal test_failed, fail_message
             if response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
                 json_data = await response.json()
-                print(f"Response from getAvailableBalance: {json_data}")
-                if json_data.get('code') != '5602':
+                print(f"Response from receiveAward: {json_data}")
+                if json_data.get('code') == '5602':
                     test_failed = True
                     fail_message = f"API 返回错误代码: {json_data.get('code')}"
-            elif response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
-                json_data = await response.json()
-                print(f"Response from insertWithdrawRecord: {json_data}")
-                if json_data.get('code') == '9999':
+                elif json_data.get('code') == '9999':
                     test_failed = True
                     fail_message = f"测试失败: {json_data.get('msg')}"
 
