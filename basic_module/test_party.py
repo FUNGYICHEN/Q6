@@ -55,11 +55,10 @@ async def test_specific_feature():
 
         with step("点击确定"):
             await page.click("a.am-modal-button[role='button']:has-text('確定')")
-            await asyncio.sleep(2)
+            await asyncio.sleep(5)  # 增加等待时间，以确保响应接收
             await take_screenshot_and_attach(page, "点击确定后")
 
         # 等待响应被接收
-        await asyncio.sleep(5)
         if not response_received:
             test_failed = True
             fail_message = "未收到API响应"
