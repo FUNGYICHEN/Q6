@@ -43,12 +43,12 @@ async def test_specific_feature():
             if response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
                 json_data = await response.json()
                 print(f"Response from receiveAward: {json_data}")
-                if json_data.get('code') == '5602':
-                    test_failed = True
-                    fail_message = f"API 返回错误代码: {json_data.get('code')}"
-                elif json_data.get('code') == '9999':
+                if json_data.get('code') == '9999':
                     test_failed = True
                     fail_message = f"测试失败: {json_data.get('msg')}"
+                elif json_data.get('code') != '0000':
+                    test_failed = True
+                    fail_message = f"API 返回错误代码: {json_data.get('code')}"
 
         page.on('response', handle_response)
 
@@ -56,6 +56,14 @@ async def test_specific_feature():
             await page.click("a.am-modal-button[role='button']:has-text('確定')")
             await asyncio.sleep(2)
             await take_screenshot_and_attach(page, "点击确定后")
+
+        # 检查API响应内容
+        response = await page.wait_for_response("https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward")
+        json_data = await response.json()
+        print(f"Final response from receiveAward: {json_data}")
+        if json_data.get('code') != '0000':
+            test_failed = True
+            fail_message = f"最终API返回错误代码: {json_data.get('code')}"
 
     except Exception as e:
         print(f"An error occurred: {e}")
