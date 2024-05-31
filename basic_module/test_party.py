@@ -47,6 +47,7 @@ async def test_specific_feature():
                 test_failed = True
                 fail_message = f"Test failed for {
                     response.url.split('/')[-1]}: {json_data.get('msg')}"
+                print(fail_message)
 
         page.on('response', handle_response)
 
@@ -54,6 +55,12 @@ async def test_specific_feature():
             await page.click("a.am-modal-button[role='button']:has-text('確定')")
             await asyncio.sleep(2)
             await take_screenshot_and_attach(page, "点击确定后")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        fail_message = str(e)
+        test_failed = True
+        await take_screenshot_and_attach(page, "error_during_test")
 
     finally:
         page.remove_listener('response', handle_response)
