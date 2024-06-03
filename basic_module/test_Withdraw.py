@@ -17,11 +17,11 @@ async def test_specific_feature():
             print(f"Response from getAvailableBalance: {json_data}")
             if json_data.get('code') != '0000':
                 test_failed = True
-                fail_message = f"API 返回错误代码: {json_data.get('code')}"
+                fail_message = f"测试失败: {json_data.get('msg')}"
         elif response.url == "https://wap-q6.qbpink01.com/payment/frontend/insertWithdrawRecord":
             json_data = await response.json()
             print(f"Response from insertWithdrawRecord: {json_data}")
-            if json_data.get('code') == '8711':
+            if json_data.get('code') != '0000':
                 test_failed = True
                 fail_message = f"测试失败: {json_data.get('msg')}"
 
