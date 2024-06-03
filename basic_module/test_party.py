@@ -12,7 +12,7 @@ async def test_specific_feature():
 
     async def handle_response(response):
         nonlocal test_failed, fail_message
-        if response.url == "http://api.uat.qit1.net/activity/frontend/extrabonus/applyAward":
+        if response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
             json_data = await response.json()
             print(f"Response from applyAward: {json_data}")
             if json_data.get('code') != '0000':
