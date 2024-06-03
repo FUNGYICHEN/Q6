@@ -9,11 +9,22 @@ async def test_specific_feature():
     playwright, browser, context = await setup_browser()  # 使用默认设备iPhone 11
     test_failed = False
     fail_message = ""
+
+    async def handle_response(response):
+        nonlocal test_failed, fail_message
+        if response.url == "http://api.uat.qit1.net/activity/frontend/extrabonus/applyAward":
+            json_data = await response.json()
+            print(f"Response from applyAward: {json_data}")
+            if json_data.get('code') != '0000':
+                test_failed = True
+                fail_message = f"API returned error code: {
+                    json_data.get('code')}"
+
     try:
         page = await load_and_check_page(context)
         print("Page loaded successfully.")
-
         await login(page, "all24042501", "396012")  # 使用公共登录函数
+        page.on('response', handle_response)
 
         with step("导航到个人中心"):
             await page.click("div.label:has-text('個人中心')")
@@ -48,6 +59,7 @@ async def test_specific_feature():
         fail_message = str(e)
         test_failed = True
     finally:
+        page.remove_listener('response', handle_response)
         if browser:
             await browser.close()
         if playwright:
