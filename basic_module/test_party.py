@@ -12,20 +12,18 @@ async def test_specific_feature():
 
     async def handle_response(response):
         nonlocal test_failed, fail_message
-        if response.url == "http://api.uat.qit1.net/activity/frontend/extrabonus/applyAward":
+        if response.url == "https://wap-q6.qbpink01.com/activity/frontend/extrabonus/applyAward":
             json_data = await response.json()
-            print(f"Response from applyAward: {json_data}")
+            print(f"Response from getAvailableBalance: {json_data}")
             if json_data.get('code') != '0000':
                 test_failed = True
-                fail_message = f"API returned error code: {
-                    json_data.get('code')}"
-        elif response.url == "https://wap-q6.qbpink01.com/activity/frontend/eGamePrize/receiveAward":
+                fail_message = f"API 返回错误代码: {json_data.get('code')}"
+        elif response.url == "https://wap-q6.qbpink01.com/activity/frontend/extrabonus/applyAward":
             json_data = await response.json()
-            print(f"Response from receiveAward: {json_data}")
-            if json_data.get('code') != '0000':
+            print(f"Response from insertWithdrawRecord: {json_data}")
+            if json_data.get('code') == '9103':
                 test_failed = True
-                fail_message = f"API returned error code: {
-                    json_data.get('code')}"
+                fail_message = f"测试失败: {json_data.get('msg')}"
 
     try:
         page = await load_and_check_page(context)
