@@ -6,7 +6,7 @@ from playwright.async_api import Page, BrowserContext
 DEFAULT_URL = "https://wap-q6.qbpink01.com/"
 
 
-async def setup_browser(device_name='iPhone 11', headless=False):
+async def setup_browser(device_name='iPhone 11', headless=True):
     """设置浏览器环境并返回浏览器上下文和实例。"""
     playwright = await async_playwright().start()
     device = playwright.devices[device_name]
