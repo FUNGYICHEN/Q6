@@ -32,7 +32,7 @@ async def take_screenshot_and_attach(page, step_name):
         print("Page is closed, cannot take screenshot.")
         return
     try:
-        screenshot_bytes = await page.screenshot(full_page=True)
+        screenshot_bytes = await page.screenshot(full_page=False)
         allure.attach(screenshot_bytes, name=step_name,
                       attachment_type=allure.attachment_type.PNG)
     except Exception as e:
