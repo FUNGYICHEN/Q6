@@ -3,10 +3,10 @@ from playwright.async_api import async_playwright
 import allure
 
 # 默认的URL
-DEFAULT_URL = "https://wap-q6.qbpink01.com/reg"
+DEFAULT_URL = "http://wapv2.jc-uat.qit1.net/reg"
 
 
-async def setup_browser(device_name='iPhone 11', headless=True):
+async def setup_browser(device_name='iPhone 11', headless=False):
     """设置浏览器环境并返回浏览器上下文和实例。"""
     playwright = await async_playwright().start()
     device = playwright.devices[device_name]

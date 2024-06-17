@@ -22,13 +22,13 @@ def generate_hk_phone_number():
 
 @pytest.mark.asyncio
 async def test_registration():
-    playwright, browser, context = await setup_browser(device_name='iPhone 11', headless=True)
+    playwright, browser, context = await setup_browser(device_name='iPhone 11', headless=False)
     try:
         page = await context.new_page()
-        await page.goto('https://wap-q6.qbpink01.com/reg')
+        await page.goto('http://wapv2.jc-uat.qit1.net/reg')
 
         username = generate_random_string(6, 3)
-        password = generate_random_string(6, 3)
+        password = "396012"  # 将密码设为固定值
         phone_number = generate_hk_phone_number()
 
         with step("填写用户名"):
@@ -58,7 +58,6 @@ async def test_registration():
             await asyncio.sleep(3)
             await take_screenshot_and_attach(page, "after_filling_password")
 
-            # 點擊註冊按鈕
         with step("点击注册按钮"):
             await page.click('div.submitBtn:has-text("會員註冊")')
             await asyncio.sleep(5)
